@@ -59,7 +59,7 @@ func (h *Helm) Download() error {
 	}
 	// Execute the command
 	cmd := execCommand("helm", args...)
-	
+
 	if logger.Debug {
 		logger.Debugf("Executing command: helm %s\n", strings.Join(args, " "))
 		cmd.Stdout = os.Stdout
@@ -110,7 +110,7 @@ func (h *Helm) Upload() error {
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 	}
-	
+
 	err = cmd.Run()
 	if err != nil {
 		logger.Printf("failed to push to the registry: %s", err)
@@ -124,17 +124,17 @@ func (h *Helm) Upload() error {
 func (h *Helm) findDownloadedChart() (string, error) {
 	parts := strings.Split(h.Chart, "/")
 	chartBase := parts[len(parts)-1]
-	
+
 	// Helm might save the file with or without a 'v' prefix depending on the chart's Chart.yaml version field.
 	// We'll strip any 'v' first, then try both ways.
 	cleanVersion := strings.TrimPrefix(h.Version, "v")
-	
+
 	pattern := fmt.Sprintf("%s-%s.tgz", chartBase, cleanVersion)
 	matches, err := filepath.Glob(filepath.Join(tempDir, pattern))
 	if err != nil {
 		return "", err
 	}
-	
+
 	if len(matches) == 0 {
 		// Fallback to v-prefixed version
 		pattern = fmt.Sprintf("%s-v%s.tgz", chartBase, cleanVersion)
@@ -143,7 +143,7 @@ func (h *Helm) findDownloadedChart() (string, error) {
 			return "", err
 		}
 	}
-	
+
 	logger.Debugf("Looking for downloaded chart using pattern %s (chart: %s, version: %s), found matches: %v", pattern, h.Chart, h.Version, matches)
 	if len(matches) == 0 {
 		return "", os.ErrNotExist

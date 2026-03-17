@@ -2,8 +2,8 @@ package rke2
 
 import (
 	"fmt"
-	"io"
 	"github.com/alknopfler/seactl/pkg/logger"
+	"io"
 	"net/http"
 	"os"
 	"path/filepath"

@@ -63,7 +63,7 @@ var GenerateAirGapEnvironment = func(
 		if err := reg.RegistryHelmLogin(); err != nil {
 			return err
 		}
-		
+
 		// Attempt to create the 'edge' project on Harbor specifically, ignores errors if not Harbor
 		reg.CreateHarborProject("mirror")
 	}

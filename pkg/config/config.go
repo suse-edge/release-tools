@@ -5,8 +5,8 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
-	"gopkg.in/yaml.v2"
 	"github.com/alknopfler/seactl/pkg/logger"
+	"gopkg.in/yaml.v2"
 	"os/exec"
 	"strings"
 )

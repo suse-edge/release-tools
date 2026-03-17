@@ -118,6 +118,7 @@ func (r *Registry) RegistryLogin() error {
 	}
 
 	transport := &http.Transport{
+		Proxy:           http.ProxyFromEnvironment,
 		TLSClientConfig: tlsConfig,
 	}
 
@@ -201,6 +202,7 @@ func (r *Registry) CreateHarborProject(projectName string) error {
 	}
 
 	transport := &http.Transport{
+		Proxy:           http.ProxyFromEnvironment,
 		TLSClientConfig: tlsConfig,
 	}
 	client := &http.Client{Transport: transport}
@@ -227,7 +229,7 @@ func (r *Registry) CreateHarborProject(projectName string) error {
 		return err
 	}
 	req.Header.Set("Content-Type", "application/json")
-	
+
 	authFileInfo, err := r.GetUserFromAuthFile()
 	if err == nil {
 		req.SetBasicAuth(authFileInfo[0], authFileInfo[1])
@@ -245,7 +247,7 @@ func (r *Registry) CreateHarborProject(projectName string) error {
 		logger.Debugf("Registry API returned 404, assuming standard Docker Registry, skipping project creation.")
 		return nil
 	}
-	
+
 	if resp.StatusCode == http.StatusCreated {
 		logger.Printf("Successfully created Harbor project: %s", projectName)
 	} else if resp.StatusCode == http.StatusConflict {

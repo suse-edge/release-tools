@@ -138,6 +138,7 @@ func (i *Images) getRemoteOpts() ([]remote.Option, error) {
 	}
 
 	transport := &http.Transport{
+		Proxy:           http.ProxyFromEnvironment,
 		TLSClientConfig: tlsConfig,
 	}
 

@@ -205,18 +205,18 @@ func TestGetRemoteOpts_InvalidAuthFile(t *testing.T) {
 }
 
 func TestVerify_Success(t *testing.T) {
-img := New("test/image:latest", nil, nil)
-err := img.Verify()
-assert.NoError(t, err)
+	img := New("test/image:latest", nil, nil)
+	err := img.Verify()
+	assert.NoError(t, err)
 }
 
 func TestBuildTargetReference_Digest(t *testing.T) {
-reg := registry.New("auth", "registry.local", "pass", false)
-img := New("test/image@sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", reg, nil)
-ref, err := name.ParseReference(img.Name)
-assert.NoError(t, err)
+	reg := registry.New("auth", "registry.local", "pass", false)
+	img := New("test/image@sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", reg, nil)
+	ref, err := name.ParseReference(img.Name)
+	assert.NoError(t, err)
 
-targetRef, err := img.buildTargetReference(ref)
-assert.NoError(t, err)
-assert.Contains(t, targetRef.String(), "registry.local/mirror/test/image@sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855")
+	targetRef, err := img.buildTargetReference(ref)
+	assert.NoError(t, err)
+	assert.Contains(t, targetRef.String(), "registry.local/mirror/test/image@sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855")
 }

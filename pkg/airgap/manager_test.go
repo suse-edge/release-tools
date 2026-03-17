@@ -5,8 +5,8 @@ import (
 	"testing"
 
 	"github.com/alknopfler/seactl/pkg/config"
-	"github.com/stretchr/testify/assert"
 	"github.com/alknopfler/seactl/pkg/registry"
+	"github.com/stretchr/testify/assert"
 )
 
 func fakeReleaseManifest() (*config.ReleaseManifest, *config.ImagesManifest, error) {
@@ -62,19 +62,19 @@ func TestGenerateAirGapEnvironment_ErrorFromManifest(t *testing.T) {
 }
 
 func TestGenerateRKE2Artifacts_NotDryRun(t *testing.T) {
-manifest, _, _ := fakeReleaseManifest()
-err := generateRKE2Artifacts(false, manifest, "/tmp")
-assert.Error(t, err)
+	manifest, _, _ := fakeReleaseManifest()
+	err := generateRKE2Artifacts(false, manifest, "/tmp")
+	assert.Error(t, err)
 }
 
 func TestGenerateHelmArtifacts_NotDryRun(t *testing.T) {
-manifest, _, _ := fakeReleaseManifest()
-err := generateHelmArtifacts(false, manifest, &registry.Registry{}, &registry.Registry{})
-assert.Error(t, err)
+	manifest, _, _ := fakeReleaseManifest()
+	err := generateHelmArtifacts(false, manifest, &registry.Registry{}, &registry.Registry{})
+	assert.Error(t, err)
 }
 
 func TestGenerateImagesArtifacts_NotDryRun(t *testing.T) {
-_, imagesManifest, _ := fakeReleaseManifest()
-err := generateImagesArtifacts(false, imagesManifest, &registry.Registry{}, &registry.Registry{})
-assert.Error(t, err)
+	_, imagesManifest, _ := fakeReleaseManifest()
+	err := generateImagesArtifacts(false, imagesManifest, &registry.Registry{}, &registry.Registry{})
+	assert.Error(t, err)
 }

@@ -189,7 +189,9 @@ func Test_ensureTrailingSlash(t *testing.T) {
 func TestRKE2_Upload(t *testing.T) {
 	r := New("v1.2.3", "outdir")
 	err := r.Upload()
-	if err != nil { t.Errorf("unexpected error: %v", err) }
+	if err != nil {
+		t.Errorf("unexpected error: %v", err)
+	}
 }
 
 func TestRKE2_Download_FailMkdir(t *testing.T) {

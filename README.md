@@ -1,7 +1,6 @@
 # seactl (SUSE Edge Airgap Command Line Interface)
 
 [![Go](https://github.com/alknopfler/seactl/actions/workflows/go.yml/badge.svg)](https://github.com/alknopfler/seactl/actions/workflows/go.yml)
-[![Coverage Status](https://coveralls.io/repos/github/alknopfler/seactl/badge.svg?branch=main)](https://coveralls.io/github/alknopfler/seactl?branch=main)
 
 
 SUSE Edge Airgap Tool created to make the airgap process easier for SUSE Edge for telco deployments.
