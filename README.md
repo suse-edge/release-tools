@@ -107,7 +107,7 @@ seactl mirror -v 3.4.0 -m production -o /tmp/airgap --rancher-apps-authfile ranc
 
 ```bash
 # This mode assumes /release_manifest.yaml and /release_images.yaml exist locally (e.g. inside the container)
-seactl mirror -o /tmp/airgap --rancher-apps-authfile rancher-auth.txt -a registry-auth.txt -r myregistry:5000 --insecure --debug
+podman run <image id> mirror -o /tmp/airgap --rancher-apps-authfile rancher-auth.txt -a registry-auth.txt -r myregistry:5000 --insecure --debug
 ```
 
 ### Proxy Support
